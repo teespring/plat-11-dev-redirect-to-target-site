@@ -1,0 +1,33 @@
+// goal: redirect from jarrett.lol to the netlify site requested
+export default async (request, context, window) =>{
+  // what is the current request link?
+    //https://www.jarrett.lol
+   // console.log(request);
+  //  console.log(window);
+    //window.location.replace("https://www.google.com");
+  ///const currentRequestLink = window.location.href;
+  // where do we want to go to?
+  ///const goToThisLink = "https://my-store-d9830b.creator-spring.com/";
+  // how do we redirect it?
+  ///request.href = goToThisLink;
+
+  return {
+    statusCode: 302,
+    headers: {
+      Location: "http://localhost:8888",
+      X-Foo: "value-to-be-sent"
+    }
+  }
+}
+export const config = { path: "/test"};
+/*
+import type { Context } from "https://edge.netlify.com";
+
+export default async (request: Request, context: Context) => {
+  const value = Deno.env.get("MY_IMPORTANT_VARIABLE");
+
+  return new Response(`Value of MY_IMPORTANT_VARIABLE is "${value}".`, {
+    headers: { "content-type": "text/html" },
+  });
+};
+*/
