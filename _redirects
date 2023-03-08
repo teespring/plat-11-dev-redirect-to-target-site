@@ -1,0 +1,2 @@
+/static/* http://localhost:3002/static/:splat 200!
+/manifest.json http://localhost:3002/manifest.json 200!
