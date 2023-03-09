@@ -7,11 +7,16 @@ export default async function handler(req, context) {
   const creatorSpringStream = await creatorSpringReq.body;
   let creatorSpringContents = await new Response(creatorSpringStream).text();
 
-  const preSplice = creatorSpringContents.slice(0, creatorSpringContents.lastIndexOf('</head>'));
-  const postSplice = creatorSpringContents.slice(creatorSpringContents.lastIndexOf('</head>'));
-  creatorSpringContents = `${preSplice}<script>window.STORE_ID='${storeId}'</script>${postSplice}`
+  if (storeId) {
+    const preSplice = creatorSpringContents.slice(0, creatorSpringContents.lastIndexOf('</head>'));
+    const postSplice = creatorSpringContents.slice(creatorSpringContents.lastIndexOf('</head>'));
+    creatorSpringContents = `${preSplice}<script>window.localStorage.setItem('STORE_ID','${storeId}')</script>${postSplice}`
+  }
 
   return new Response(creatorSpringContents, { headers: Object.fromEntries(creatorSpringReq.headers.entries()) });
 }
 
-export const config = { path: '/' }
+export const config = {
+  path: '/*',
+  excludedPath: '**/*.*'
+}
