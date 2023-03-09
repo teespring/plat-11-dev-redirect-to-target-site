@@ -1,0 +1,11 @@
+{
+    "scripts": {
+        "test": "jest"
+    },
+    "dependencies": {
+        "node-fetch": "^3.3.0"
+    },
+    "devDependencies": {
+        "@babel/plugin-transform-modules-commonjs": "^7.21.2"
+    }
+}
