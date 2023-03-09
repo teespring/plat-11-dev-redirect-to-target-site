@@ -1,2 +1,5 @@
 # Local Netlify folder
 .netlify
+
+# Manifest artifact generated during deploy
+store-manifest.js
